@@ -1,0 +1,54 @@
+
+var cloud = function(x,y,h) {
+stroke(230, 101, 200);
+fill(254, 242, 255);
+ellipse(x+(h/150*136), y-(h/150*2), (h/150*68), (h/150*72));
+ellipse(x+(h/150*51), y-(h/150*3), (h/150*76), (h/150*80));
+ellipse(x+(h/150*17), y+(h/150*7), (h/150*50), (h/150*54));
+ellipse(x+(h/150*167), y+(h/150*3), (h/150*51), (h/150*54));
+ellipse(x+(h/150*100), y-(h/150*19), (h/150*103), (h/150*105));
+noStroke();
+fill(254, 242, 255);
+ellipse(x+(h/150*135), y-(h/150*2), (h/150*68), (h/150*70));
+ellipse(x+(h/150*50), y-(h/150*3), (h/150*65), (h/150*75));
+ellipse(x+(h/150*20), y+(h/150*5), (h/150*50), (h/150*50));
+ellipse(x+(h/150*165), y+(h/150*1), (h/150*50), (h/150*50));
+ellipse(x+(h/150*100), y-(h/150*19), (h/150*100), (h/150*100));
+};
+
+//2 arrays: one for the X,Y of clouds
+var X = [400];
+var Y = [0,200];
+
+//for loop to fill the three arrays with random values
+for (var i = 0; i < 100; i++) {
+    X.push(round(random(10,390)));
+    Y.push(round(random(10,390)));
+}
+
+var draw = function() 
+{
+    //background
+    background(153, 230, 255);
+
+    noStroke();
+    fill(228, 220, 237);
+    rect(0,345,400,55);
+    textSize(15);
+    fill(0, 0, 0);
+    text("the girls decided to hit the road and chase", 5, 365);
+    text(" the truck", 5, 385);
+   
+    // for loop the bitmojis
+    for (var i = 0; i < X.length; i++) {
+        cloud(X[i]-40, Y[i]-200, 60, 50);
+        
+        //moves the cloud by moving x position
+        X[i] -= 2;
+       
+    //redraw the cloud on the left side
+        if (X[i] < -50) 
+        {X[i] = round(random(10, 400));}
+    }
+    
+};
